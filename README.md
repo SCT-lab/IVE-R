@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # **aframeinr: Creating and Visualizing 3D Models in R and A-Frame**
 
 ## Overview
