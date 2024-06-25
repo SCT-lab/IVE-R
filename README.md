@@ -143,3 +143,12 @@ Please open an issue or submit a pull request if you find any bugs or have sugge
 ## License
 
 This package is licensed under the MIT License.
+
+##Development Work
+Development work by Abide Coskun-Setirek, project managed by Will Hurst (will.hurst@wur.nl). The project was funded by NWO OSF project OSF23.1.004.
+
+<p align="center">
+  <a href="https://www.linkedin.com/company/sct-lab"><img src="https://github.com/SCT-lab/IVE-R/blob/main/images/SCT-WUR.png" alt="SCT Lab" width="100"></a>
+  <a href="https://www.wur.nl/en.htm"><img src="https://github.com/SCT-lab/IVE-R/blob/main/images/Wur-logo.png" alt="WUR" width="100"></a>
+</p>
+
