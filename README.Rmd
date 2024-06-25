@@ -1,3 +1,7 @@
+---
+output: github_document
+---
+
 # **aframeinr: Creating and Visualizing 3D Models in R and A-Frame**
 
 ## Overview
@@ -10,7 +14,8 @@
 
 To install the development version of `aframeinr`:
 
-```         
+```{r eval=FALSE}
+
 #Install packages
 install.packages(c("sf", "glue","rgl", "dplyr", "httr", "units"))
 
@@ -27,7 +32,8 @@ install.packages("devtools")
 
 The `define_aoi` function allows you to define an area of interest based on a central point and a buffer distance.
 
-```         
+```{r eval=FALSE}
+
 library(aframeinr)
 
 # Define area of interest
@@ -40,7 +46,8 @@ print(bbox_string)
 
 The `get_3Dbag_items` function retrieves 3D building data within the defined area of interest.
 
-```         
+```{r eval=FALSE}
+
 # Get 3DBag data
 data <- get_3Dbag_items(bbox_string)
 ```
@@ -49,18 +56,20 @@ data <- get_3Dbag_items(bbox_string)
 
 The `plot_3Dbag_buildings` function gets 3DBag Data within the defined area of interest using the `define_aoi` and `get_3Dbag_items` functions, plots the 3D buildings and returns a matrix of coordinates.
 
-```         
+```{r eval=FALSE}
+
 # Plot 3DBag buildings
 coords <- plot_3Dbag_buildings(lon = 5.387200, lat = 52.155170, buffer_distance = 100)
 ```
 
-<img src="man/figures/3Dplot.png" width="684"/>
+![](man/figures/3Dplot.png){width="684"}
 
 ### Save 3D Model as GLB
 
 The `save_model_as_glb` function saves the 3D model as a GLB file, which can be used for VR scenes.
 
-```         
+```{r eval=FALSE}
+
 #Save 3D model as GLB file
 save_model_as_glb("buildings", coords)
 ```
@@ -69,54 +78,60 @@ save_model_as_glb("buildings", coords)
 
 The `create_VR function` generates an HTML file with an A-Frame VR scene using the GLB model.
 
-```         
+```{r eval=FALSE}
+
 # Create VR HTML
 `#create_VR("buildings.glb", "output.html")`
 ```
 
-<img src="man/figures/create_VR.png" width="684"/>
+![](man/figures/create_VR.png){width="684"}
 
-```         
+```{r eval=FALSE}
+
 # Create VR HTML with optional parameters
 create_VR("buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
 ```
 
-<img src="man/figures/create_VR_prop.png" width="684"/>
+![](man/figures/create_VR_prop.png){width="684"}
 
 ### Set VR Environment
 
 The `set_VR_environment` function updates the VR HTML file to add an A-Frame environment component with specified parameters.
 
-```         
+```{r eval=FALSE}
+
 # Set VR environment
 set_VR_environment("output.html", "tron")
 ```
 
-<img src="man/figures/set_env_default.png" width="684"/>
+![](man/figures/set_env_default.png){width="684"}
 
-```         
+```{r eval=FALSE}
+
 # Set VR environment with optional parameters
 set_VR_environment("output.html", "tron", skyType = "color", skyColor = "pink")
 ```
 
-<img src="man/figures/set_evn_tron.png" width="684"/>
+![](man/figures/set_evn_tron.png){width="684"}
 
 ### Rotate VR Model
 
 The `rotate_VR` function adds rotation to the VR model in the HTML file.
 
-```         
+```{r eval=FALSE}
+
 # Rotate VR model
 rotate_VR("output.html", TRUE, speed = 0.0002, clockwise = 0)
 ```
 
-<img src="man/figures/rotate.png" width="684"/>
+![](man/figures/rotate.png){width="684"}
 
 ## Example Workflow
 
 Here is an example workflow to create a VR scene from scratch:
 
-```         
+```{r eval=FALSE}
+
 # Load library
 library(aframeinr)
 
