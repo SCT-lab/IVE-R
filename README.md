@@ -54,7 +54,7 @@ The `plot_3Dbag_buildings` function gets 3DBag Data within the defined area of i
 coords <- plot_3Dbag_buildings(lon = 5.387200, lat = 52.155170, buffer_distance = 100)
 ```
 
-<img src="main/figures/3Dplot.png" width="684"/>
+<img src="https://github.com/SCT-lab/IVE-R/main/figures/3Dplot.png" width="684"/>
 
 ### Save 3D Model as GLB
 
@@ -71,17 +71,17 @@ The `create_VR function` generates an HTML file with an A-Frame VR scene using t
 
 ```         
 # Create VR HTML
-`#create_VR("buildings.glb", "output.html")`
+`#create_VR("https://github.com/SCT-lab/IVE-R/buildings.glb", "output.html")`
 ```
 
-<img src="main/figures/create_VR.png" width="684"/>
+<img src="https://github.com/SCT-lab/IVE-R/main/figures/create_VR.png" width="684"/>
 
 ```         
 # Create VR HTML with optional parameters
 create_VR("buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
 ```
 
-<img src="man/figures/create_VR_prop.png" width="684"/>
+<img src="https://github.com/SCT-lab/IVE-R/main/figures/create_VR_prop.png" width="684"/>
 
 ### Set VR Environment
 
@@ -92,14 +92,14 @@ The `set_VR_environment` function updates the VR HTML file to add an A-Frame env
 set_VR_environment("output.html", "tron")
 ```
 
-<img src="main/figures/set_env_default.png" width="684"/>
+<img src="https://github.com/SCT-lab/IVE-R/main/figures/set_env_default.png" width="684"/>
 
 ```         
 # Set VR environment with optional parameters
 set_VR_environment("output.html", "tron", skyType = "color", skyColor = "pink")
 ```
 
-<img src="main/figures/set_evn_tron.png" width="684"/>
+<img src="https://github.com/SCT-lab/IVE-R/main/figures/set_evn_tron.png" width="684"/>
 
 ### Rotate VR Model
 
@@ -110,7 +110,7 @@ The `rotate_VR` function adds rotation to the VR model in the HTML file.
 rotate_VR("output.html", TRUE, speed = 0.0002, clockwise = 0)
 ```
 
-<img src="main/figures/rotate.png" width="684"/>
+<img src="https://github.com/SCT-lab/IVE-R/main/figures/rotate.png" width="684"/>
 
 ## Example Workflow
 
