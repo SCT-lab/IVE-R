@@ -144,7 +144,7 @@ Please open an issue or submit a pull request if you find any bugs or have sugge
 
 This package is licensed under the MIT License.
 
-##Development Work
+## Development Work
 Development work by Abide Coskun-Setirek, project managed by Will Hurst (will.hurst@wur.nl). The project was funded by NWO OSF project OSF23.1.004.
 
 <p align="center">
