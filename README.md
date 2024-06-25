@@ -54,7 +54,7 @@ The `plot_3Dbag_buildings` function gets 3DBag Data within the defined area of i
 coords <- plot_3Dbag_buildings(lon = 5.387200, lat = 52.155170, buffer_distance = 100)
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/blob/main/figures/3Dplot.png" width="400"/> 
+<img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/3Dplot.png" width="400"/> 
 
 ### Save 3D Model as GLB
 
@@ -74,14 +74,14 @@ The `create_VR function` generates an HTML file with an A-Frame VR scene using t
 `#create_VR("https://github.com/SCT-lab/IVE-R/buildings.glb", "output.html")`
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/blob/main/figures/create_VR.png" width="400"/>
+<img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/create_VR.png" width="400"/>
 
 ```         
 # Create VR HTML with optional parameters
 create_VR("buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/blob/main/figures/create_VR_prop.png" width="400"/>
+<img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/create_VR_prop.png" width="400"/>
 
 ### Set VR Environment
 
@@ -92,14 +92,14 @@ The `set_VR_environment` function updates the VR HTML file to add an A-Frame env
 set_VR_environment("output.html", "tron")
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/blob/main/figures/set_env_default.png" width="400"/>
+<img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/set_env_default.png" width="400"/>
 
 ```         
 # Set VR environment with optional parameters
 set_VR_environment("output.html", "tron", skyType = "color", skyColor = "pink")
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/blob/main/figures/set_evn_tron.png" width="400"/>
+<img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/set_evn_tron.png" width="400"/>
 
 ### Rotate VR Model
 
@@ -110,7 +110,7 @@ The `rotate_VR` function adds rotation to the VR model in the HTML file.
 rotate_VR("output.html", TRUE, speed = 0.0002, clockwise = 0)
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/blob/main/figures/rotate.png" width="400"/>
+<img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/rotate.png" width="400"/>
 
 ## Example Workflow
 
@@ -148,7 +148,7 @@ This package is licensed under the MIT License.
 Development work by Abide Coskun-Setirek, project managed by Will Hurst (will.hurst@wur.nl). The project was funded by NWO OSF project OSF23.1.004.
 
 <p align="center">
-  <a href="https://www.linkedin.com/company/sct-lab"><img src="https://github.com/SCT-lab/IVE-R/blob/main/images/SCT-WUR.png" alt="SCT Lab" width="100"></a>
-  <a href="https://www.wur.nl/en.htm"><img src="https://github.com/SCT-lab/IVE-R/blob/main/images/Wur-logo.png" alt="WUR" width="100"></a>
+  <a href="https://www.linkedin.com/company/sct-lab"><img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/SCT-WUR.png" alt="SCT Lab" width="100"></a>
+  <a href="https://www.wur.nl/en.htm"><img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/Wur-logo.png" alt="WUR" width="100"></a>
 </p>
 
