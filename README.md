@@ -54,7 +54,7 @@ The `plot_3Dbag_buildings` function gets 3DBag Data within the defined area of i
 coords <- plot_3Dbag_buildings(lon = 5.387200, lat = 52.155170, buffer_distance = 100)
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/main/figures/3Dplot.png" width="684"/>
+<img src="https://github.com/SCT-lab/IVE-R/blob/main/figures/3Dplot.png" width="684"/> 
 
 ### Save 3D Model as GLB
 
