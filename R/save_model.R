@@ -88,9 +88,6 @@ illum 1
       stop("Conversion to GLB failed. Please check the obj2gltf tool and try again.")
     }
 
-    # Clean up the intermediate MTL file
-    file.remove(mtl_file)
-
   }, error = function(e) {
     stop("An error occurred: ", e$message)
   })
