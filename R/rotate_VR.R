@@ -20,6 +20,33 @@ rotate_VR <- function(input_html, rotate, speed = 0.0001, clockwise = 1) {
   # Read the input HTML file
   html_content <- readLines(input_html)
 
+  # Check if the input HTML file exists
+  if (!file.exists(input_html)) {
+    stop("The specified input HTML file does not exist.")
+  }
+
+  # Check if rotate is a logical value
+  if (!is.logical(rotate)) {
+    stop("The 'rotate' parameter must be a logical value (TRUE or FALSE).")
+  }
+
+  # Check if speed is a numeric value
+  if (!is.numeric(speed) || length(speed) != 1) {
+    stop("The 'speed' parameter must be a single numeric value.")
+  }
+
+  # Check if clockwise is a numeric value (1 or 0)
+  if (!is.numeric(clockwise) || length(clockwise) != 1 || !clockwise %in% c(0, 1)) {
+    stop("The 'clockwise' parameter must be a single numeric value (1 for clockwise, 0 for counterclockwise).")
+  }
+
+  # Check if the model is GLB or GLTF
+  if (!any(grepl('<a-entity gltf-model=', html_content))) {
+    warning("Automatic rotation is only supported for GLB/GLTF models. The model will not rotate.")
+    return(invisible(NULL))
+  }
+
+
   # Define the rotation script
   rotation_script <- '
   <script>
