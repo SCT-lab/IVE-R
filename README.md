@@ -1,8 +1,14 @@
-# **aframeinr: Creating and Visualizing 3D Models in R and A-Frame**
+![](man/figures/aframeinr_logo.png){align="right" height="138"}
+
+# aframeinr: Creating and Visualizing 3D Models in R and A-Frame
+
+|                                                                                                                                                                                                                                                                                                                                                                                                            |
+|:-----------------------------------------------------------------------|
+| ![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg){alt="Lifecycle: maturing"} ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg){alt="License: MIT"} ![Project Status: Active](https://img.shields.io/badge/status-active-brightgreen.svg){alt="Project Status: Active"} ![CRAN Status](https://www.r-pkg.org/badges/version/aframeinr){alt="CRAN Status"} |
 
 ## Overview
 
-`aframeinr` is an R package designed to streamline the creation of 3D visualizations and immersive virtual reality (VR) scenes using geographic data and the A-Frame framework. This package provides a comprehensive set of tools to define areas of interest, retrieve 3D building data, visualize these buildings, and create interactive VR environments. Key features include defining spatial areas, extracting and plotting 3D building data, saving models in GLB format, and generating customizable VR scenes with environment settings and rotation capabilities.
+`aframeinr` is an R package designed to streamline the creation of 3D visualizations and immersive virtual reality (VR) scenes using geographic data and the A-Frame framework. This package provides a comprehensive set of tools to define areas of interest, retrieve 3D building data, visualize these buildings, and create interactive VR environments. Key features include defining spatial areas, extracting and plotting 3D building data, saving models in GLB and OBJ formats, and generating customizable VR scenes with environment settings and rotation capabilities.
 
 ## Installation
 
@@ -54,15 +60,15 @@ The `plot_3Dbag_buildings` function gets 3DBag Data within the defined area of i
 coords <- plot_3Dbag_buildings(lon = 5.387200, lat = 52.155170, buffer_distance = 100)
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/3Dplot.png" width="400"/> 
+<img src="man/figures/3Dplot.png" width="684"/>
 
 ### Save 3D Model as GLB
 
-The `save_model_as_glb` function saves the 3D model as a GLB file, which can be used for VR scenes.
+The `save_model` function saves the 3D model as GLB and OBJ files, which can be used for VR scenes.
 
 ```         
-#Save 3D model as GLB file
-save_model_as_glb("buildings", coords)
+#Save 3D model as GLB and OBJ files
+save_model("inst/", "buildings", coords)
 ```
 
 ### Create VR HTML
@@ -71,17 +77,17 @@ The `create_VR function` generates an HTML file with an A-Frame VR scene using t
 
 ```         
 # Create VR HTML
-`#create_VR("https://github.com/SCT-lab/IVE-R/buildings.glb", "output.html")`
+`#create_VR("buildings.glb", "output.html")`
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/create_VR.png" width="400"/>
+<img src="man/figures/create_VR.png" width="684"/>
 
 ```         
 # Create VR HTML with optional parameters
 create_VR("buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/create_VR_prop.png" width="400"/>
+<img src="man/figures/create_VR_prop.png" width="684"/>
 
 ### Set VR Environment
 
@@ -92,25 +98,25 @@ The `set_VR_environment` function updates the VR HTML file to add an A-Frame env
 set_VR_environment("output.html", "tron")
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/set_env_default.png" width="400"/>
+<img src="man/figures/set_env_default.png" width="684"/>
 
 ```         
 # Set VR environment with optional parameters
 set_VR_environment("output.html", "tron", skyType = "color", skyColor = "pink")
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/set_evn_tron.png" width="400"/>
+<img src="man/figures/set_evn_tron.png" width="684"/>
 
 ### Rotate VR Model
 
-The `rotate_VR` function adds rotation to the VR model in the HTML file.
+The `rotate_VR` function adds rotation to the GLB model in the HTML file.
 
 ```         
-# Rotate VR model
+# Rotate only the GLB model
 rotate_VR("output.html", TRUE, speed = 0.0002, clockwise = 0)
 ```
 
-<img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/rotate.png" width="400"/>
+<img src="man/figures/rotate.png" width="684"/>
 
 ## Example Workflow
 
@@ -124,15 +130,15 @@ library(aframeinr)
 coords <- plot_3Dbag_buildings(5.387200, 52.155170, 1000)
 
 # Save 3D model as GLB file
-save_model_as_glb("buildings", coords)
+save_model("inst/", "buildings", coords)
 
 # Create VR HTML
-create_VR("buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
+create_VR("inst/buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
 
 # Set VR environment
 set_VR_environment("output.html", "tron", skyType = "color", skyColor = "pink")
 
-# Rotate VR model
+# Rotate the GLB model
 rotate_VR("output.html", TRUE, speed = 0.0002, clockwise = 0)
 ```
 
@@ -143,12 +149,3 @@ Please open an issue or submit a pull request if you find any bugs or have sugge
 ## License
 
 This package is licensed under the MIT License.
-
-## Development Work
-Development work by Abide Coskun-Setirek, project managed by Will Hurst (will.hurst@wur.nl). The project was funded by NWO OSF project OSF23.1.004.
-
-<p align="center">
-  <a href="https://www.linkedin.com/company/sct-lab"><img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/SCT-WUR.png" alt="SCT Lab" width="100"></a>
-  <a href="https://www.wur.nl/en.htm"><img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/Wur-logo.png" alt="WUR" width="100"></a>
-</p>
-
