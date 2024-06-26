@@ -16,8 +16,7 @@ create_VR("inst/buildings.glb", "output.html")
 # Create 3D model for A-frame with specific position, scale, and rotation values
 #create_VR("inst/buildings.glb", "output.html",c(0, 2.5, -3),c(0.01, 0.01, 0.01),c(-75,0,0))
 
-# Set VR environment
-#Valid values: none, default, contact, egypt, checkerboard, forest, goaland, yavapai, goldmine, threetowers, poison, arches, tron, japan, dream, volcano, starry, osiris
+# Set VR environment (Valid values: none, default, contact, egypt, checkerboard, forest, goaland, yavapai, goldmine, threetowers, poison, arches, tron, japan, dream, volcano, starry, osiris)
 set_VR_environment("output.html", "tron")
 
 # Set VR environment with sky type (color/gradient) and color
