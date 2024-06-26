@@ -19,6 +19,35 @@
 #' @title Set VR Environment
 #' @export
 set_VR_environment <- function(input_html, environment_preset, skyType = "atmosphere", skyColor = "blue") {
+
+  # Check if input_html is a valid file
+  if (!file.exists(input_html)) {
+    stop("The input HTML file does not exist.")
+  }
+
+  # Valid presets
+  valid_presets <- c("none", "default", "contact", "egypt", "checkerboard", "forest", "goaland", "yavapai",
+                     "goldmine", "threetowers", "poison", "arches", "tron", "japan", "dream", "volcano",
+                     "starry", "osiris")
+
+  # Check if environment_preset is valid
+  if (missing(environment_preset) || !is.character(environment_preset) ||
+      nchar(environment_preset) == 0 || !environment_preset %in% valid_presets) {
+    stop("Invalid environment_preset. Valid values are: none, default, contact, egypt, checkerboard, forest, goaland, yavapai, goldmine, threetowers, poison, arches, tron, japan, dream, volcano, starry, osiris.")
+  }
+
+  # Check if skyType is valid
+  valid_sky_types <- c("color", "gradient", "atmosphere")
+  if (!skyType %in% valid_sky_types) {
+    stop("Invalid skyType. Valid values are 'color', 'gradient', or 'atmosphere'.")
+  }
+
+  # Check if skyColor is a valid string
+  if (!is.character(skyColor) || nchar(skyColor) == 0) {
+    stop("skyColor must be a valid non-empty string.")
+  }
+
+
   # Read the input HTML file
   html_content <- readLines(input_html)
 
