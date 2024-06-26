@@ -36,4 +36,3 @@ define_aoi <- function(lon, lat, buffer_distance) {
   bbox_string <- paste(aoi_bbox[1], aoi_bbox[2], aoi_bbox[3], aoi_bbox[4], sep = ",")
   return(bbox_string)
 }
-
