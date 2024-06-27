@@ -77,7 +77,7 @@ The `create_VR function` generates an HTML file with an A-Frame VR scene using t
 
 ```         
 # Create VR HTML
-`create_VR("buildings.glb", "output.html")`
+create_VR("buildings.glb", "output.html")
 ```
 
 <img src="man/figures/create_VR.png" width="684"/>
