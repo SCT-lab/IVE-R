@@ -77,14 +77,14 @@ The `create_VR function` generates an HTML file with an A-Frame VR scene using t
 
 ```         
 # Create VR HTML
-create_VR("buildings.glb", "output.html")
+create_VR("inst/buildings.glb", "output.html")
 ```
 
 <img src="man/figures/create_VR.png" width="684"/>
 
 ```         
 # Create VR HTML with optional parameters
-create_VR("buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
+create_VR("inst/buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
 ```
 
 <img src="man/figures/create_VR_prop.png" width="684"/>
