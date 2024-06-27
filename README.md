@@ -1,5 +1,5 @@
 
-<img src="man/figures/aframeinr_logo.png" width="200"/>
+<img src="man/figures/aframeinr_logo.png" width="200" align="center"/>
 
 # aframeinr: Creating and Visualizing 3D Models in R and A-Frame
 
@@ -64,7 +64,7 @@ The `plot_3Dbag_buildings` function gets 3DBag Data within the defined area of i
 coords <- plot_3Dbag_buildings(lon = 5.387200, lat = 52.155170, buffer_distance = 100)
 ```
 
-<img src="man/figures/3Dplot.png" width="684"/>
+<img src="man/figures/3Dplot.png" width="400"/>
 
 ### Save 3D Model as GLB
 
@@ -84,14 +84,14 @@ The `create_VR function` generates an HTML file with an A-Frame VR scene using t
 create_VR("inst/buildings.glb", "output.html")
 ```
 
-<img src="man/figures/create_VR.png" width="684"/>
+<img src="man/figures/create_VR.png" width="400"/>
 
 ```         
 # Create VR HTML with optional parameters
 create_VR("inst/buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
 ```
 
-<img src="man/figures/create_VR_prop.png" width="684"/>
+<img src="man/figures/create_VR_prop.png" width="400"/>
 
 ### Set VR Environment
 
@@ -102,14 +102,14 @@ The `set_VR_environment` function updates the VR HTML file to add an A-Frame env
 set_VR_environment("output.html", "tron")
 ```
 
-<img src="man/figures/set_env_default.png" width="684"/>
+<img src="man/figures/set_env_default.png" width="400"/>
 
 ```         
 # Set VR environment with optional parameters
 set_VR_environment("output.html", "tron", skyType = "color", skyColor = "pink")
 ```
 
-<img src="man/figures/set_evn_tron.png" width="684"/>
+<img src="man/figures/set_evn_tron.png" width="400"/>
 
 ### Rotate VR Model
 
