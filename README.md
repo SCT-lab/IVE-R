@@ -1,5 +1,5 @@
 
-<img src="man/figures/aframeinr_logo.png" width="200" align="center"/>
+<img src="man/figures/aframeinr_logo.png" width="200"/>
 
 # aframeinr: Creating and Visualizing 3D Models in R and A-Frame
 
