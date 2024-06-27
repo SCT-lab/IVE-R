@@ -5,9 +5,10 @@
 
 |                                                                                                                                                                                                                                                                                                                                                                                                            |
 |:-----------------------------------------------------------------------|
-| ![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg "Lifecycle: maturing") 
+|![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg "Lifecycle: maturing") 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg "License: MIT") 
-![Project Status: Active](https://img.shields.io/badge/status-active-brightgreen.svg "Project Status: Active") ![CRAN Status](https://www.r-pkg.org/badges/version/aframeinr "CRAN Status") |
+![Project Status: Active](https://img.shields.io/badge/status-active-brightgreen.svg "Project Status: Active") 
+![CRAN Status](https://www.r-pkg.org/badges/version/aframeinr "CRAN Status") |
 
 ## Overview
 
