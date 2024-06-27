@@ -1,14 +1,10 @@
+![](man/figures/aframeinr_logo.png){align="right" height="138"}
 
-<img src="man/figures/aframeinr_logo.png" width="200"/>
-
-# aframeinr: Creating and Visualizing 3D Models in R and A-Frame
+# **aframeinr: Creating and Visualizing 3D Models in R and A-Frame**
 
 |                                                                                                                                                                                                                                                                                                                                                                                                            |
 |:-----------------------------------------------------------------------|
-|![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg "Lifecycle: maturing") 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg "License: MIT") 
-![Project Status: Active](https://img.shields.io/badge/status-active-brightgreen.svg "Project Status: Active") 
-![CRAN Status](https://www.r-pkg.org/badges/version/aframeinr "CRAN Status") |
+| ![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg){alt="Lifecycle: maturing"} ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg){alt="License: MIT"} ![Project Status: Active](https://img.shields.io/badge/status-active-brightgreen.svg){alt="Project Status: Active"} ![CRAN Status](https://www.r-pkg.org/badges/version/aframeinr){alt="CRAN Status"} |
 
 ## Overview
 
@@ -41,38 +37,36 @@ The `define_aoi` function allows you to define an area of interest based on a ce
 library(aframeinr)
 
 # Define area of interest
-bbox_string <- define_aoi(lon = 5.387200, lat = 52.155170, buffer_distance = 1000)
-
-print(bbox_string)
+bbox=define_aoi(5.387200, 52.155170, 100)
 ```
 
 ### Get 3DBag Data
 
-The `get_3Dbag_items` function retrieves 3D building data within the defined area of interest.
+The `get_3Dbag_items` function retrieves 3DBag building data within the defined area of interest and returns a matrix of coordinates.
 
 ```         
-# Get 3DBag data
-data <- get_3Dbag_items(bbox_string)
+# Get 3DBag building data and extract coordinates
+coords=get_3Dbag_items(bbox)
 ```
 
 ### Plot 3DBag Buildings
 
-The `plot_3Dbag_buildings` function gets 3DBag Data within the defined area of interest using the `define_aoi` and `get_3Dbag_items` functions, plots the 3D buildings and returns a matrix of coordinates.
+The `plot_3Dbag_buildings` plots the 3D buildings within the bbox area using coordinates.
 
 ```         
-# Plot 3DBag buildings
-coords <- plot_3Dbag_buildings(lon = 5.387200, lat = 52.155170, buffer_distance = 100)
+# Plot 3D buildings 
+plot_3Dbag_buildings(coords)
 ```
 
-<img src="man/figures/3Dplot.png" width="400"/>
+<img src="man/figures/3Dplot.png" width="684"/>
 
-### Save 3D Model as GLB
+### Save 3D Model as GLB and OBJ
 
 The `save_model` function saves the 3D model as GLB and OBJ files, which can be used for VR scenes.
 
 ```         
-#Save 3D model as GLB and OBJ files
-save_model("inst/", "buildings", coords)
+# Save 3D model as glb file with an optional color
+#save_model("inst/","buildings", coords, "gray")
 ```
 
 ### Create VR HTML
@@ -80,18 +74,18 @@ save_model("inst/", "buildings", coords)
 The `create_VR function` generates an HTML file with an A-Frame VR scene using the GLB model.
 
 ```         
-# Create VR HTML
-create_VR("inst/buildings.glb", "output.html")
+# Create VR HTML with the A-frame framework
+`#create_VR("inst/buildings.glb", "output.html")`
 ```
 
-<img src="man/figures/create_VR.png" width="400"/>
+<img src="man/figures/create_VR.png" width="684"/>
 
 ```         
 # Create VR HTML with optional parameters
 create_VR("inst/buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
 ```
 
-<img src="man/figures/create_VR_prop.png" width="400"/>
+<img src="man/figures/create_VR_prop.png" width="684"/>
 
 ### Set VR Environment
 
@@ -102,14 +96,14 @@ The `set_VR_environment` function updates the VR HTML file to add an A-Frame env
 set_VR_environment("output.html", "tron")
 ```
 
-<img src="man/figures/set_env_default.png" width="400"/>
+<img src="man/figures/set_env_default.png" width="684"/>
 
 ```         
 # Set VR environment with optional parameters
 set_VR_environment("output.html", "tron", skyType = "color", skyColor = "pink")
 ```
 
-<img src="man/figures/set_evn_tron.png" width="400"/>
+<img src="man/figures/set_evn_tron.png" width="684"/>
 
 ### Rotate VR Model
 
@@ -130,19 +124,26 @@ Here is an example workflow to create a VR scene from scratch:
 # Load library
 library(aframeinr)
 
-# Plot 3DBag buildings
-coords <- plot_3Dbag_buildings(5.387200, 52.155170, 1000)
+# Define area of interest
+bbox=define_aoi(5.387200, 52.155170, 100)
 
-# Save 3D model as GLB file
-save_model("inst/", "buildings", coords)
+# Get 3DBag building data and extract coordinates
+coords=get_3Dbag_items(bbox)
 
-# Create VR HTML
-create_VR("inst/buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
+# Plot 3D buildings
+plot_3Dbag_buildings(coords)
 
-# Set VR environment
+# Save 3D model as obj and glb files with a specific color
+save_model("inst/","buildings", coords, "gray")
+
+# Create 3D model for A-frame with specific position, scale, and rotation values
+create_VR("inst/buildings.glb", "output.html",c(0, 2.5, -3),c(0.01, 0.01, 0.01),c(-75,0,0))
+
+# Set VR environment with sky type (color, gradient) and color
 set_VR_environment("output.html", "tron", skyType = "color", skyColor = "pink")
+#set_VR_environment("output.html", "japan", skyType = "gradient", skyColor = "#FFDD99")
 
-# Rotate the GLB model
+# Rotate only glb models clockwise/counterclockwise with a specific speed
 rotate_VR("output.html", TRUE, speed = 0.0002, clockwise = 0)
 ```
 
@@ -153,11 +154,3 @@ Please open an issue or submit a pull request if you find any bugs or have sugge
 ## License
 
 This package is licensed under the MIT License.
-
-## Development Work
-Development work by Abide Coskun-Setirek, project managed by Will Hurst (will.hurst@wur.nl). The project was funded by NWO OSF project OSF23.1.004.
-
-<p align="center">
-  <a href="https://www.linkedin.com/company/sct-lab"><img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/SCT-WUR.png" alt="SCT Lab" width="100"></a>
-  <a href="https://www.wur.nl/en.htm"><img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/Wur-logo.png" alt="WUR" width="100"></a>
-</p>
