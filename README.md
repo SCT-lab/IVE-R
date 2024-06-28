@@ -5,7 +5,10 @@
 
 |                                                                                                                                                                                                                                                                                                                                                                                                            |
 |:-----------------------------------------------------------------------|
-| ![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg){alt="Lifecycle: maturing"} ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg){alt="License: MIT"} ![Project Status: Active](https://img.shields.io/badge/status-active-brightgreen.svg){alt="Project Status: Active"} ![CRAN Status](https://www.r-pkg.org/badges/version/aframeinr){alt="CRAN Status"} |
+| ![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg "Lifecycle: maturing") 
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg "License: MIT") 
+![Project Status: Active](https://img.shields.io/badge/status-active-brightgreen.svg "Project Status: Active") 
+![CRAN Status](https://www.r-pkg.org/badges/version/aframeinr "CRAN Status") |
 
 ## Overview
 
@@ -150,8 +153,6 @@ Please open an issue or submit a pull request if you find any bugs or have sugge
 ## License
 
 This package is licensed under the MIT License.
-
-## Developers
 
 ## Development Work
 Development work by Abide Coskun-Setirek, project managed by Will Hurst (will.hurst@wur.nl). The project was funded by NWO OSF project OSF23.1.004.
