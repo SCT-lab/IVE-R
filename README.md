@@ -22,7 +22,7 @@ To install the development version of `aframeinr`:
 
 ```         
 #Install packages
-install.packages(c("sf", "glue","rgl", "dplyr", "httr", "units"))
+install.packages(c("sf", "glue","rgl", "dplyr", "httr", "units", "jsonlite"))
 
 #Install devtools if you haven't already
 install.packages("devtools")
