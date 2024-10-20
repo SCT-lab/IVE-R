@@ -38,7 +38,7 @@ install.packages(c("servr","devtools"))
 
 #Install aframeinr from GitHub
 
-## devtools::install_github("SCT-lab/IVE-R")
+## devtools::install_github("SCT-lab/IVE-R@new_code_structure")
 ```
 
 ## Usage
