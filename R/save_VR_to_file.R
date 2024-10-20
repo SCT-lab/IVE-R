@@ -10,7 +10,6 @@
 #'
 #' @return None. The function saves the VR environment to the file system and prints a message upon completion.
 #'
-#' @importFrom base writeLines
 #'
 #' @examples
 #' \dontrun{
