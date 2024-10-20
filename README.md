@@ -34,10 +34,7 @@ To install the development version of `aframeinr`:
 
 ``` r
 #Install packages
-install.packages(c("glue","rgl", "dplyr", "httr","servr"))
-
-#Install devtools if you haven't already
-install.packages("devtools")
+install.packages(c("servr","devtools"))
 
 #Install aframeinr from GitHub
 
