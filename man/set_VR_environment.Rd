@@ -2,37 +2,60 @@
 % Please edit documentation in R/set_VR_environment.R
 \name{set_VR_environment}
 \alias{set_VR_environment}
-\title{Set VR Environment}
+\title{Set Up a Virtual Reality (VR) Environment in A-Frame}
 \usage{
 set_VR_environment(
-  input_html,
-  environment_preset,
+  environment_preset = "forest",
   skyType = "atmosphere",
-  skyColor = "blue"
+  skyColor = "blue",
+  indoor = FALSE
 )
 }
 \arguments{
-\item{input_html}{Path to the input HTML file.}
+\item{environment_preset}{A character string specifying the environment preset to use.
+Valid options are: "none", "default", "contact", "egypt", "checkerboard", "forest",
+"goaland", "yavapai", "goldmine", "threetowers", "poison", "arches", "tron",
+"japan", "dream", "volcano", "starry", "osiris", and "moon". Default is "forest".}
 
-\item{environment_preset}{The environment preset to use for the A-Frame environment component.}
+\item{skyType}{A character string specifying the type of sky to use.
+Valid options are: "color", "gradient", or "atmosphere". Default is "atmosphere".}
 
-\item{skyType}{(Optional) The type of sky. Valid values: "color", "gradient", "atmosphere". Defaults to "atmosphere".}
+\item{skyColor}{A character string specifying the color of the sky when \code{skyType} is "color" or "gradient".
+If \code{skyType} is set to "atmosphere", this parameter is ignored. Default is "blue".}
 
-\item{skyColor}{(Optional) The sky color. When skyType is "color" or "gradient", it sets the main sky color. Defaults to "blue".}
+\item{indoor}{A logical value. If \code{TRUE}, adds a default indoor structure to the VR scene.
+Default is \code{FALSE}.}
 }
 \value{
-Updates the input HTML file with the specified environment preset and sky settings for the 3D model.
+A list containing the HTML structure as a character vector, which defines the VR environment
+in A-Frame.
 }
 \description{
-Set VR Environment
+Creates an HTML structure that defines a virtual reality environment using A-Frame, with customizable
+environment presets, sky settings, and the option to add indoor structures. The output can be used to
+generate a complete VR scene that can be viewed in both desktop and VR headsets.
 }
 \details{
-This function updates an existing VR HTML file to add an A-Frame environment component with specified parameters.
+This function generates an HTML file that initializes a VR environment using A-Frame, a framework for
+building virtual reality experiences in the browser. The user can specify various environment presets and
+sky configurations. Additionally, an indoor structure can be added if desired. The resulting HTML content
+can be saved and viewed on a desktop or a VR headset.
+
+The \code{environment_preset} parameter controls the visual theme of the environment, such as a forest or
+moon landscape. The \code{skyType} and \code{skyColor} allow customization of the sky appearance, but \code{skyColor}
+is ignored if \code{skyType} is set to "atmosphere". The \code{indoor} parameter toggles the inclusion of an
+indoor structure in the environment.
+}
+\note{
+The \code{skyColor} is only used when \code{skyType} is set to "color" or "gradient". If \code{skyType} is set
+to "atmosphere", \code{skyColor} will be ignored, and a warning will be issued.
 }
 \examples{
-\dontrun{
-set_VR_environment("output.html", "forest")
-set_VR_environment("output.html", "egypt", skyType = "color", skyColor = "red")
-set_VR_environment("output.html", "japan", skyType = "gradient", skyColor = "#FFDD99")
-}
+# Basic environment setup with default values
+vr_env <- set_VR_environment()
+
+# Custom environment setup with a specific environment preset and sky color
+vr_env <- set_VR_environment(environment_preset = "japan", skyType = "color", skyColor = "pink")
+
+
 }

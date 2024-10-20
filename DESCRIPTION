@@ -1,7 +1,8 @@
 Package: aframeinr
 Title: 3D Model Visualizations in R and 'A-Frame'
-Version: 0.0.0.9000
+Version: 0.0.0.901
 Authors@R: 
+    person("Sebastian","Garzon Alvarado",,"j.s.garzonalvarado@uu.nl",role = c("aut", "cre"))
     person("Abide", "Coskun-Setirek", , "abidecoskun38@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4575-3271"))
 Description: Functions for retrieving '3DBag' data, and producing '3D' model visualizations for the 'A-Frame' including interactive functions.
@@ -9,15 +10,9 @@ License: MIT + file LICENSE
 URL: 
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Imports:
     rgl,
     glue,
     httr,
-    sf,
-    dplyr,
-    units,
-    jsonlite
-Suggests:
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
+    dplyr

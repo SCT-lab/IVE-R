@@ -1,18 +1,28 @@
 
-<img src="man/figures/aframeinr_logo.png" width="200"/>
+<img src="man/figures/aframeinr_logo.png" data-align="right"
+height="138" />
 
-# aframeinr: Creating and Visualizing 3D Models in R and A-Frame
+# **aframeinr: Creating and Visualizing 3D Models in R and A-Frame**
 
-|                                                                                                                                                                                                                                                                                                                                                                                                            |
-|:-----------------------------------------------------------------------|
-| ![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg "Lifecycle: maturing") 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg "License: MIT") 
-![Project Status: Active](https://img.shields.io/badge/status-active-brightgreen.svg "Project Status: Active") 
-![CRAN Status](https://www.r-pkg.org/badges/version/aframeinr "CRAN Status") |
+|                                                                                             |
+|:--------------------------------------------------------------------------------------------|
+| <img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg"                         
+ alt="Lifecycle: maturing" /> <img src="https://img.shields.io/badge/License-MIT-yellow.svg"  
+ alt="License: MIT" /> <img src="https://img.shields.io/badge/status-active-brightgreen.svg"  
+ alt="Project Status: Active" /> <img src="https://www.r-pkg.org/badges/version/aframeinr"    
+ alt="CRAN Status" />                                                                         |
 
 ## Overview
 
-`aframeinr` is an R package designed to streamline the creation of 3D visualizations and immersive virtual reality (VR) scenes using geographic data and the A-Frame framework. This package provides a comprehensive set of tools to define areas of interest, retrieve 3D building data, visualize these buildings, and create interactive VR environments. Key features include defining spatial areas, extracting and plotting 3D building data, saving models in GLB and OBJ formats, and generating customizable VR scenes with environment settings and rotation capabilities.
+`aframeinr` is an R package designed to streamline the creation of 3D
+visualizations and immersive virtual reality (VR) scenes using
+geographic data and the A-Frame framework. This package provides a
+comprehensive set of tools to define areas of interest, retrieve 3D
+building data, visualize these buildings, and create interactive VR
+environments. Key features include defining spatial areas, extracting
+and plotting 3D building data, saving models in OBJ formats, and
+generating customizable VR scenes with environment settings and rotation
+capabilities.
 
 ## Installation
 
@@ -20,144 +30,146 @@
 
 To install the development version of `aframeinr`:
 
-```         
+``` r
 #Install packages
-install.packages(c("sf", "glue","rgl", "dplyr", "httr", "units", "jsonlite"))
+install.packages(c("glue","rgl", "dplyr", "httr","servr"))
 
 #Install devtools if you haven't already
 install.packages("devtools")
 
 #Install aframeinr from GitHub
-##devtools::install_github("SCT-lab/IVE-R")
+
+## devtools::install_github("SCT-lab/IVE-R")
 ```
 
 ## Usage
 
-### Define Area of Interest
+### Initilializing a server
 
-The `define_aoi` function allows you to define an area of interest based on a central point and a buffer distance.
+As we are working with html files, it is a good idea to start a
+Localhost to be able to explore the HTML files without problems. By
+starting a server you avoid having problems importing your models into
+the VR environment.
 
-```         
+``` r
+library(servr)
+
+# Start the server in the directory where your HTML files are located
+servr::httd(".")
+```
+
+This function will create a server and provide an entry point. For
+example:
+
+`Serving the directory /Users/my_user/Desktop/IVE-R at http://127.0.0.1:5985`
+
+### Create an empty VR environment
+
+The `set_VR_environment function` generates a VR environment with an
+A-Frame VR scene. That empty environment can be exported into an html
+file using the `save_VR_to_file function`. Think about this as an empty
+canvas where you can include your OBJ models. There are different
+environments and configurations that you can modify using the
+`environment_preset`, `skyType` and `indoor` options. You can explore
+different environments (e.g., forest, moon) in the
+[aframe-environment-component](https://www.npmjs.com/package/aframe-environment-component)
+page.
+
+To build your VR environment you can use the pipe operator `%>% or |>`
+to concatenate the functions. To export your VR environment you need to
+save it using the `save_VR_to_file` function.
+
+``` r
 library(aframeinr)
 
-# Define area of interest
-bbox_string <- define_aoi(lon = 5.387200, lat = 52.155170, buffer_distance = 1000)
-
-print(bbox_string)
+# Creating empty VR environment
+set_VR_environment(
+  environment_preset = "forest",
+  skyType = "atmosphere",indoor = TRUE) |> save_VR_to_file("empty_environment.html")
 ```
 
-### Get 3DBag Data
+<img src="man/figures/empty_environment.png" width="684" />
 
-The `get_3Dbag_items` function retrieves 3D building data within the defined area of interest.
+## Adding your first model
 
-```         
-# Get 3DBag data
-data <- get_3Dbag_items(bbox_string)
+The `add_VR_object` allows you to include `OBJ` objects into your VR
+environment. You can use the `scale`, `position`,`rotation`, and
+`adjust_to_table` functions to locate your 3D Object in the best
+location. For instance, when `adjust_to_table` is set to `TRUE`
+(default), your object is located on a table.
+
+``` r
+library(aframeinr)
+
+# Including your first model
+
+set_VR_environment(environment_preset = "forest",
+                   skyType = "atmosphere",
+                   indoor = TRUE) |> 
+  add_VR_object("tests/my_city.obj",
+                scale = c(0.02,0.02,0.02),
+                position = c(0, 1.0, 0),
+                adjust_to_table = TRUE) |>
+save_VR_to_file("my_city_model.html")
 ```
 
-### Plot 3DBag Buildings
+<img src="man/figures/my_city_first.png" width="684" />
 
-The `plot_3Dbag_buildings` function gets 3DBag Data within the defined area of interest using the `define_aoi` and `get_3Dbag_items` functions, plots the 3D buildings and returns a matrix of coordinates.
+## Ajusting the initial location
 
-```         
-# Plot 3DBag buildings
-coords <- plot_3Dbag_buildings(lon = 5.387200, lat = 52.155170, buffer_distance = 100)
+The `set_camera_position` allows you to adjust the initial location of
+the user.
+
+``` r
+library(aframeinr)
+
+# Including your first model
+
+set_VR_environment(environment_preset = "forest",skyType = "atmosphere",indoor = TRUE) |>
+  add_VR_object("tests/my_city.obj",scale = c(0.02,0.02,0.02),
+                position = c(0, 1.0, 0),
+                adjust_to_table = TRUE)|>
+  set_camera_position(camera_position = c(0,2,5))|>
+  save_VR_to_file("my_city_model_loc.html")
 ```
-
-<img src="man/figures/3Dplot.png" width="684"/>
-
-### Save 3D Model as GLB
-
-The `save_model` function saves the 3D model as GLB and OBJ files, which can be used for VR scenes.
-
-```         
-#Save 3D model as GLB and OBJ files
-save_model("inst/", "buildings", coords)
-```
-
-### Create VR HTML
-
-The `create_VR function` generates an HTML file with an A-Frame VR scene using the GLB model.
-
-```         
-# Create VR HTML
-create_VR("inst/buildings.glb", "output.html")
-```
-
-<img src="man/figures/create_VR.png" width="684"/>
-
-```         
-# Create VR HTML with optional parameters
-create_VR("inst/buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
-```
-
-<img src="man/figures/create_VR_prop.png" width="684"/>
-
-### Set VR Environment
-
-The `set_VR_environment` function updates the VR HTML file to add an A-Frame environment component with specified parameters.
-
-```         
-# Set VR environment
-set_VR_environment("output.html", "tron")
-```
-
-<img src="man/figures/set_env_default.png" width="684"/>
-
-```         
-# Set VR environment with optional parameters
-set_VR_environment("output.html", "tron", skyType = "color", skyColor = "pink")
-```
-
-<img src="man/figures/set_evn_tron.png" width="684"/>
-
-### Rotate VR Model
-
-The `rotate_VR` function adds rotation to the GLB model in the HTML file.
-
-```         
-# Rotate only the GLB model
-rotate_VR("output.html", TRUE, speed = 0.0002, clockwise = 0)
-```
-
-<img src="man/figures/rotate.png" width="684"/>
 
 ## Example Workflow
 
-Here is an example workflow to create a VR scene from scratch:
+Here is an example workflow to create a VR scene with multiple models.
+We are going to use two models, one model using `Rayshader` and another
+that is already in an OBJ file.
 
-```         
-# Load library
+``` r
+library(rayshader)
 library(aframeinr)
 
-# Plot 3DBag buildings
-coords <- plot_3Dbag_buildings(5.387200, 52.155170, 1000)
+# Creating Simple Volcano model
+filename_volcano_obj <- file.path("simple_volcano.obj")
 
-# Save 3D model as GLB file
-save_model("inst/", "buildings", coords)
+volcano %>%
+ sphere_shade(sunangle = 45, texture = "desert") %>%
+ plot_3d(volcano, zscale = 20)
 
-# Create VR HTML
-create_VR("inst/buildings.glb", "output.html", position = c(0, 2.5, -3), scale = c(0.01, 0.01, 0.01), rotation = c(-75, 0, 0))
+save_obj(filename_volcano_obj)
 
-# Set VR environment
-set_VR_environment("output.html", "tron", skyType = "color", skyColor = "pink")
+# Creating the VR environment
 
-# Rotate the GLB model
-rotate_VR("output.html", TRUE, speed = 0.0002, clockwise = 0)
+# Importing model
+filename_city_obj <- "tests/my_city.obj"
+
+set_VR_environment(environment_preset = "arches",skyType = "atmosphere",indoor = TRUE) |>
+  add_VR_object(filename_city_obj,scale = c(0.02,0.02,0.02),position = c(0, 1.0, 0)) |> 
+  add_VR_object(filename_volcano_obj,scale = c(0.02,0.02,0.02),position = c(0, 0.8, 4))|>
+  set_camera_position(camera_position = c(0, 1.8, 5)) |> save_VR_to_file("models_exhibition.html")
 ```
+
+<img src="man/figures/exhibition_models.png" width="684" />
 
 ## Contributing
 
-Please open an issue or submit a pull request if you find any bugs or have suggestions for improvements.
+Please open an issue or submit a pull request if you find any bugs or
+have suggestions for improvements.
 
 ## License
 
 This package is licensed under the MIT License.
-
-## Development Work
-Development work by Abide Coskun-Setirek, project managed by Will Hurst (will.hurst@wur.nl). The project was funded by NWO OSF project OSF23.1.004.
-
-<p align="center">
-  <a href="https://www.linkedin.com/company/sct-lab"><img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/SCT-WUR.png" alt="SCT Lab" width="100"></a>
-  <a href="https://www.wur.nl/en.htm"><img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/Wur-logo.png" alt="WUR" width="100"></a>
-</p>
