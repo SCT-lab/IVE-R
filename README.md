@@ -4,13 +4,15 @@ height="138" />
 
 # **aframeinr: Creating and Visualizing 3D Models in R and A-Frame**
 
-|                                                                                             |
-|:--------------------------------------------------------------------------------------------|
-| <img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg"                         
- alt="Lifecycle: maturing" /> <img src="https://img.shields.io/badge/License-MIT-yellow.svg"  
- alt="License: MIT" /> <img src="https://img.shields.io/badge/status-active-brightgreen.svg"  
- alt="Project Status: Active" /> <img src="https://www.r-pkg.org/badges/version/aframeinr"    
- alt="CRAN Status" />                                                                         |
+<!-- badges: start -->
+
+<img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg"
+alt="Lifecycle: maturing" /><img src="https://img.shields.io/badge/License-MIT-yellow.svg"
+alt="License: MIT" />
+<img src="https://img.shields.io/badge/status-active-brightgreen.svg"
+alt="Project Status: Active" />
+<img src="https://www.r-pkg.org/badges/version/aframeinr"
+alt="CRAN Status" /> <!-- badges: end -->
 
 ## Overview
 
@@ -173,3 +175,16 @@ have suggestions for improvements.
 ## License
 
 This package is licensed under the MIT License.
+
+## Development Work
+
+Development work by Sebastián Garzón and Abide Coskun-Setirek. Project
+managed by Will Hurst (<will.hurst@wur.nl>). The project was funded by
+NWO OSF project OSF23.1.004.
+
+<p align="center">
+
+<a href="https://www.linkedin.com/company/sct-lab"><img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/SCT-WUR.png" alt="SCT Lab" width="100"/></a>
+<a href="https://www.wur.nl/en.htm"><img src="https://github.com/SCT-lab/IVE-R/blob/main/man/figures/Wur-logo.png" alt="WUR" width="100"/></a>
+
+</p>
