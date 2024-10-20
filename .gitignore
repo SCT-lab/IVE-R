@@ -2,4 +2,4 @@
 .Rapp.history
 .Rhistory
 .gitignore
-
+**/.DS_Store
