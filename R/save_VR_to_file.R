@@ -16,6 +16,7 @@
 #' vr_environment <- set_VR_environment()  # Example usage of a function that creates VR environment
 #' save_VR_to_file(vr_env = vr_environment, output_html = "my_vr_scene.html")
 #' }
+#' @export
 save_VR_to_file <- function(vr_env, output_html) {
   
   tryCatch(
