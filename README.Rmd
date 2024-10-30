@@ -79,10 +79,19 @@ library(aframeinr)
 
 # Including your first model
 
+# Path to folder with OBJ file
+obj_folder_path <- system.file("extdata", package = "aframeinr")
+
+# Copy the file to the working directory
+
+dir.create("test")
+file.copy(obj_folder_path, "test", overwrite = TRUE,recursive = TRUE)
+
+
 set_VR_environment(environment_preset = "forest",
                    skyType = "atmosphere",
                    indoor = TRUE) |> 
-  add_VR_object("tests/my_city.obj",
+  add_VR_object("test/extdata/my_city.obj",
                 scale = c(0.02,0.02,0.02),
                 position = c(0, 1.0, 0),
                 adjust_to_table = TRUE) |>
@@ -103,7 +112,7 @@ library(aframeinr)
 # Including your first model
 
 set_VR_environment(environment_preset = "forest",skyType = "atmosphere",indoor = TRUE) |>
-  add_VR_object("tests/my_city.obj",scale = c(0.02,0.02,0.02),
+  add_VR_object("test/extdata/my_city.obj",scale = c(0.02,0.02,0.02),
                 position = c(0, 1.0, 0),
                 adjust_to_table = TRUE)|>
   set_camera_position(camera_position = c(0,2,5))|>
@@ -121,7 +130,7 @@ library(rayshader)
 library(aframeinr)
 
 # Creating Simple Volcano model
-filename_volcano_obj <- file.path("simple_volcano.obj")
+filename_volcano_obj <- file.path("test","extdata","simple_volcano.obj")
 
 volcano %>%
  sphere_shade(sunangle = 45, texture = "desert") %>%
@@ -132,7 +141,7 @@ save_obj(filename_volcano_obj)
 # Creating the VR environment
 
 # Importing model
-filename_city_obj <- "tests/my_city.obj"
+filename_city_obj <- "test/extdata/my_city.obj"
 
 set_VR_environment(environment_preset = "arches",skyType = "atmosphere",indoor = TRUE) |>
   add_VR_object(filename_city_obj,scale = c(0.02,0.02,0.02),position = c(0, 1.0, 0)) |> 
