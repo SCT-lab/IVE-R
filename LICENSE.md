@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2024 Abide Coskun Setirek
+Copyright (c) 2024 Sebastián Garzón Alvarado & Abide Coskun Setirek
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
